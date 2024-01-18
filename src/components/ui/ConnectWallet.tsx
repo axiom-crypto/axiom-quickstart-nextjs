@@ -7,8 +7,8 @@ import {
   useEnsName,
 } from 'wagmi'
 import Button from './Button';
-import { shortenAddress } from '@/lib/utils';
- 
+import { forwardSearchParams, shortenAddress } from '@/lib/utils';
+
 export default function ConnectWallet() {
   const { address, isConnected } = useAccount()
   const { data: ensName } = useEnsName({ address })
@@ -22,24 +22,30 @@ export default function ConnectWallet() {
           disconnect();
         }}
       >
-        { ensName ? ensName : shortenAddress(address as string) }
+        {ensName ? ensName : shortenAddress(address as string)}
       </Button>
     )
   }
- 
+
   return (
     <div>
       {connectors.map((connector) => (
         <Button
           key={connector.id}
-          onClick={() => {
-            connect({ connector });
+          onClick={async () => {
+            connect({ connector }, {
+              onSuccess: (data) => {
+                let address = data.accounts[0];
+                let params = forwardSearchParams({ connected: address });
+                window.location.search = params;
+              }
+            });
           }}
         >
-          { "Connect Wallet" }
+          {"Connect Wallet"}
         </Button>
       ))}
- 
+
       {error && <div>{error.message}</div>}
     </div>
   )

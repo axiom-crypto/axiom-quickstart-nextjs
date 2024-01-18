@@ -15,10 +15,10 @@ import { formatEther } from "viem";
 import Link from "next/link";
 import { useAxiomCircuit } from '@axiom-crypto/react';
 
-export default function ClaimAirdropClient({
-  airdropAbi,
+export default function SubmitQuery({
+  callbackAbi,
 }: {
-  airdropAbi: any[],
+  callbackAbi: any[],
 }) {
   const { address } = useAccount();
   const router = useRouter();
@@ -28,15 +28,6 @@ export default function ClaimAirdropClient({
   // Prepare hook for the sendQuery transaction
   const { data } = useSimulateContract(builtQuery!);
   const { writeContract, isSuccess, isError, isPending } = useWriteContract();
-
-  // Check that the user has not claimed the airdrop yet
-  const { data: hasClaimed } = useReadContract({
-    address: Constants.AUTO_AIRDROP_ADDR as `0x${string}`,
-    abi: airdropAbi,
-    functionName: 'hasClaimed',
-    args: [address],
-  });
-  console.log("hasClaimed?", hasClaimed);
 
   useEffect(() => {
     if (isSuccess) {
@@ -56,15 +47,15 @@ export default function ClaimAirdropClient({
     }
   }, [isError, router, address]);
 
-  // Monitor contract for `ClaimAirdrop` or `ClaimAirdropError` events
+  // Monitor contract for `ExampleClientEvent` event
   useWatchContractEvent({
-    address: Constants.AUTO_AIRDROP_ADDR as `0x${string}`,
-    abi: airdropAbi,
-    eventName: 'ClaimAirdrop',
-    listener(log: any) {
-      console.log("Claim airdrop success");
-      console.log(log);
-      proofGeneratedAction();
+    address: Constants.CALLBACK_CONTRACT as `0x${string}`,
+    abi: callbackAbi,
+    eventName: 'ExampleClientEvent',
+    // onLogs: proofGeneratedAction,
+    onLogs: (logs) => {
+      let txHash = logs[0].transactionHash;
+      router.push(`success/?txHash=${txHash}`);
     },
   });
 
@@ -75,10 +66,7 @@ export default function ClaimAirdropClient({
     if (isPending) {
       return "Confrm transaction in wallet...";
     }
-    if (!!hasClaimed) {
-      return "Airdrop already claimed"
-    }
-    return "Claim 100 UT";
+    return "Submit query";
   }
 
   const renderClaimProofText = () => {
@@ -99,7 +87,7 @@ export default function ClaimAirdropClient({
   return (
     <div className="flex flex-col items-center gap-2">
       <Button
-        disabled={!Boolean(data?.request) || !!hasClaimed}
+        disabled={!Boolean(data?.request)}
         onClick={() => writeContract(data!.request)}
       >
         {renderButtonText()}

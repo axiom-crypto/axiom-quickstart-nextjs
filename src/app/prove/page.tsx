@@ -1,6 +1,6 @@
 import BuildQuery from "@/components/prove/BuildQuery";
 import Title from "@/components/ui/Title";
-import autoAirdropJson from '@/lib/abi/AutonomousAirdrop.json';
+import callbackAbi from '@/lib/abi/ExampleClient.json';
 import jsonInputs from "../../../axiom/data/inputs.json";
 import { bytes32 } from "@/lib/utils";
 import { publicClient } from "@/lib/viemClient";
@@ -40,10 +40,10 @@ export default async function Prove({ searchParams }: PageProps) {
       <div className="flex flex-col gap-2 items-center">
         <BuildQuery
           inputs={inputs}
-          callbackAddress={Constants.AUTO_AIRDROP_ADDR}
+          callbackAddress={Constants.CALLBACK_CONTRACT}
           callbackExtraData={bytes32(connected)}
           refundee={connected}
-          airdropAbi={autoAirdropJson.abi}
+          callbackAbi={callbackAbi}
         />
       </div>
     </>

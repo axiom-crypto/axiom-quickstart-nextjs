@@ -11,8 +11,6 @@ const metadata = {
   icons: ['']
 }
 
-const chains = [sepolia];
-
 export const config = createConfig({
   chains: [sepolia],
   transports: {

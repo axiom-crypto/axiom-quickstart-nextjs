@@ -16,7 +16,7 @@ interface SearchParams {
 }
 
 export default async function Success({ searchParams }: PageProps) {
-  const connected = searchParams?.connected as string ?? "";
+  const txHash = searchParams?.txHash as string ?? "";
 
   return (
     <>
@@ -24,9 +24,9 @@ export default async function Success({ searchParams }: PageProps) {
         Success
       </Title>
       <div className="text-center">
-        {"Congratulations! You've successfully claimed the UselessToken airdrop."}
+        {"Congratulations! Your Axiom query has been fulfilled."}
       </div>
-      <Link href={`https://sepolia.etherscan.io/token/${Constants.TOKEN_ADDR}?a=${connected}`} target="_blank">
+      <Link href={`https://sepolia.etherscan.io/tx/${txHash}`} target="_blank">
         View on Etherscan
       </Link>
     </>
