@@ -1,10 +1,6 @@
 # Autonomous Airdrop Webapp Example
 
-Be sure to update `env.local.example` and rename it to `.env.local`.
-
-## AxiomREPL
-
-The [AxiomREPL](https://repl.axiom.xyz/) code is located at `/webapp/src/lib/circuit/index.ts`.
+Be sure to update `.env.local.example` and rename it to `.env.local`.
 
 ## Getting Started
 
