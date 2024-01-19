@@ -17,7 +17,7 @@ export default function AxiomProvider({
       compiledCircuit={compiledCircuit}
       provider={process.env.NEXT_PUBLIC_ALCHEMY_URI_SEPOLIA as string}
       chainId={"11155111"}
-      mock={false}
+      mock={true}
     >
       {mounted && children}
     </AxiomCircuitProvider>

@@ -1,6 +1,6 @@
 import BuildQuery from "@/components/prove/BuildQuery";
 import Title from "@/components/ui/Title";
-import callbackAbi from '@/lib/abi/ExampleClient.json';
+import callbackAbi from '@/lib/abi/AverageBalance.json';
 import jsonInputs from "../../../axiom/data/inputs.json";
 import { bytes32 } from "@/lib/utils";
 import { publicClient } from "@/lib/viemClient";

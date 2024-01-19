@@ -2,7 +2,7 @@
 
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { config } from '@/lib/wagmiConfig';
+import { wagmiConfig } from '@/lib/wagmiConfig';
 import { useEffect, useState } from "react";
 
 const queryClient = new QueryClient() 
@@ -12,7 +12,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => setMounted(true), []);
 
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}> 
         {mounted && children}
       </QueryClientProvider>
