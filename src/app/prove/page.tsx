@@ -22,7 +22,7 @@ interface SearchParams {
 
 export default async function Prove({ searchParams }: PageProps) {
   const connected = searchParams?.connected as string ?? "";
-  
+
   const blockNumber = await publicClient.getBlockNumber();
   const inputs: UserInput<typeof jsonInputs> = {
     blockNumber: Number(blockNumber),

@@ -3,9 +3,7 @@
 import { Constants } from "@/shared/constants";
 import { useEffect, useState } from "react";
 import {
-  useAccount,
   useWatchContractEvent,
-  useReadContract,
   useWriteContract,
   useSimulateContract,
 } from "wagmi";

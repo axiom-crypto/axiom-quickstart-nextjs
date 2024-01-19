@@ -11,7 +11,7 @@ export default function AxiomProvider({
 }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  
+
   return (
     <AxiomCircuitProvider
       compiledCircuit={compiledCircuit}

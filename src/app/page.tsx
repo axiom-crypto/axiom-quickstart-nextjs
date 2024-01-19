@@ -35,7 +35,7 @@ export default async function Home({ searchParams }: PageProps) {
     if (isConnected) {
       return <LinkButton
         label="Generate Proof"
-        href={"/prove?" + forwardSearchParams({connected: address})}
+        href={"/prove?" + forwardSearchParams({ connected: address })}
       />;
     }
     return <ConnectWallet />;

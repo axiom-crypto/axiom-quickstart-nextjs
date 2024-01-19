@@ -1,5 +1,4 @@
 import Title from "@/components/ui/Title";
-import { Constants } from "@/shared/constants";
 import Link from "next/link";
 
 interface PageProps {
