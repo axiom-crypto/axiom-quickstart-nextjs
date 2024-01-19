@@ -25,7 +25,7 @@ export default function Navbar() {
         <Link href="https://github.com/axiom-crypto/autonomous-airdrop-example">
           Github
         </Link>
-        <ConnectWallet connected={connected} />
+        <ConnectWallet/>
       </div>
     </div>
   )

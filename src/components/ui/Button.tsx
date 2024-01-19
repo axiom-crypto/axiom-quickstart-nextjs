@@ -16,18 +16,18 @@ export default function Button(props: ButtonProps) {
         disabled={true}
         className="px-4 py-2 bg-container-main text-darkline font-mono cursor-not-allowed"
       >
-        { children }
+        {children}
       </button>
     )
   }
-  const emptyFn = () => {};
+  const emptyFn = () => { };
   return (
-    <button 
+    <button
       onClick={onClick || emptyFn}
       type={props.type || "button"}
       className="text-highlight text-md font-mono border-[1px] border-highlight bg-buttonbg px-4 py-2 hover:bg-buttonbg-hover hover:text-white duration-300 cursor-pointer"
     >
-      { children }
+      {children}
     </button>
   )
 }

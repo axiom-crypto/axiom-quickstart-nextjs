@@ -1,11 +1,9 @@
 "use client";
 
 import { Constants } from "@/shared/constants";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  useAccount,
   useWatchContractEvent,
-  useReadContract,
   useWriteContract,
   useSimulateContract,
 } from "wagmi";
@@ -15,12 +13,11 @@ import { formatEther } from "viem";
 import Link from "next/link";
 import { useAxiomCircuit } from '@axiom-crypto/react';
 
-export default function ClaimAirdropClient({
-  airdropAbi,
+export default function SubmitQuery({
+  callbackAbi,
 }: {
-  airdropAbi: any[],
+  callbackAbi: any[],
 }) {
-  const { address } = useAccount();
   const router = useRouter();
   const { builtQuery } = useAxiomCircuit();
   const [showExplorerLink, setShowExplorerLink] = useState(false);
@@ -29,42 +26,26 @@ export default function ClaimAirdropClient({
   const { data } = useSimulateContract(builtQuery!);
   const { writeContract, isSuccess, isError, isPending } = useWriteContract();
 
-  // Check that the user has not claimed the airdrop yet
-  const { data: hasClaimed } = useReadContract({
-    address: Constants.AUTO_AIRDROP_ADDR as `0x${string}`,
-    abi: airdropAbi,
-    functionName: 'hasClaimed',
-    args: [address],
-  });
-  console.log("hasClaimed?", hasClaimed);
-
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
         setShowExplorerLink(true);
-      }, 30000);
+      }, 15000);
     }
   }, [isSuccess, setShowExplorerLink]);
 
-  const proofGeneratedAction = useCallback(() => {
-    router.push(`success/?address=${address}`);
-  }, [router, address]);
-
-  const proofValidationFailedAction = useCallback(() => {
-    if (isError) {
-      router.push(`fail/?address=${address}`);
-    }
-  }, [isError, router, address]);
-
-  // Monitor contract for `ClaimAirdrop` or `ClaimAirdropError` events
+  // Monitor contract for `AxiomV2Call` event
   useWatchContractEvent({
-    address: Constants.AUTO_AIRDROP_ADDR as `0x${string}`,
-    abi: airdropAbi,
-    eventName: 'ClaimAirdrop',
-    listener(log: any) {
-      console.log("Claim airdrop success");
-      console.log(log);
-      proofGeneratedAction();
+    address: Constants.CALLBACK_CONTRACT as `0x${string}`,
+    abi: callbackAbi,
+    eventName: 'AxiomV2Call',
+    onLogs: (logs) => {
+      let topics = logs[0].topics;
+      // check that the queryId is the same as the one we just sent
+      if (topics[3] && builtQuery?.queryId && BigInt(topics[3]) === BigInt(builtQuery?.queryId)) {
+        let txHash = logs[0].transactionHash;
+        router.push(`success/?txHash=${txHash}`);
+      }
     },
   });
 
@@ -75,10 +56,7 @@ export default function ClaimAirdropClient({
     if (isPending) {
       return "Confrm transaction in wallet...";
     }
-    if (!!hasClaimed) {
-      return "Airdrop already claimed"
-    }
-    return "Claim 100 UT";
+    return "Submit query";
   }
 
   const renderClaimProofText = () => {
@@ -90,7 +68,7 @@ export default function ClaimAirdropClient({
       return null;
     }
     return (
-      <Link href={`https://explorer.axiom.xyz/v2/sepolia`} target="_blank">
+      <Link href={`${Constants.EXPLORER_BASE_URL}/query/${builtQuery?.queryId}`} target="_blank">
         View status on Axiom Explorer
       </Link>
     )
@@ -99,7 +77,7 @@ export default function ClaimAirdropClient({
   return (
     <div className="flex flex-col items-center gap-2">
       <Button
-        disabled={!Boolean(data?.request) || !!hasClaimed}
+        disabled={!Boolean(data?.request)}
         onClick={() => writeContract(data!.request)}
       >
         {renderButtonText()}

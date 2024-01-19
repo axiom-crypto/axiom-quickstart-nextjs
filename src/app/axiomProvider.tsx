@@ -11,13 +11,13 @@ export default function AxiomProvider({
 }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  
+
   return (
     <AxiomCircuitProvider
       compiledCircuit={compiledCircuit}
       provider={process.env.NEXT_PUBLIC_ALCHEMY_URI_SEPOLIA as string}
       chainId={"11155111"}
-      mock={false}
+      mock={true}
     >
       {mounted && children}
     </AxiomCircuitProvider>

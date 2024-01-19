@@ -1,9 +1,11 @@
-import MainLayout from '@/components/layout/MainLayout'
+'use client';
+
 import ConnectWallet from '@/components/ui/ConnectWallet'
 import LinkButton from '@/components/ui/LinkButton'
 import Title from '@/components/ui/Title'
 import { forwardSearchParams } from '@/lib/utils'
 import compiledCircuit from "../../axiom/data/compiled.json";
+import { useAccount } from 'wagmi';
 
 interface PageProps {
   params: Params;
@@ -19,8 +21,7 @@ interface SearchParams {
 }
 
 export default async function Home({ searchParams }: PageProps) {
-  const connected = searchParams?.connected as string ?? "";
-  console.log(searchParams);
+  const { isConnected, address } = useAccount();
 
   if (compiledCircuit === undefined) {
     return (
@@ -31,13 +32,13 @@ export default async function Home({ searchParams }: PageProps) {
   }
 
   const renderButton = () => {
-    if (connected) {
+    if (isConnected) {
       return <LinkButton
         label="Generate Proof"
-        href={"/prove?" + forwardSearchParams(searchParams)}
+        href={"/prove?" + forwardSearchParams({ connected: address })}
       />;
     }
-    return <ConnectWallet connected={connected} />;
+    return <ConnectWallet />;
   }
 
   return (
