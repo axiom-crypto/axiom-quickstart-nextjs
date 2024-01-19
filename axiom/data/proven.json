@@ -1,6 +1,5 @@
 {
   "sourceChainId": "undefined",
-  "mock": false,
   "computeQuery": {
     "k": 13,
     "vkey": [
