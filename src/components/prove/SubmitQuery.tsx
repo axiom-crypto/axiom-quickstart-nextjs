@@ -1,7 +1,7 @@
 "use client";
 
 import { Constants } from "@/shared/constants";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useAccount,
   useWatchContractEvent,
@@ -20,7 +20,6 @@ export default function SubmitQuery({
 }: {
   callbackAbi: any[],
 }) {
-  const { address } = useAccount();
   const router = useRouter();
   const { builtQuery } = useAxiomCircuit();
   const [showExplorerLink, setShowExplorerLink] = useState(false);
@@ -33,29 +32,22 @@ export default function SubmitQuery({
     if (isSuccess) {
       setTimeout(() => {
         setShowExplorerLink(true);
-      }, 30000);
+      }, 15000);
     }
   }, [isSuccess, setShowExplorerLink]);
 
-  const proofGeneratedAction = useCallback(() => {
-    router.push(`success/?address=${address}`);
-  }, [router, address]);
-
-  const proofValidationFailedAction = useCallback(() => {
-    if (isError) {
-      router.push(`fail/?address=${address}`);
-    }
-  }, [isError, router, address]);
-
-  // Monitor contract for `ExampleClientEvent` event
+  // Monitor contract for `AxiomV2Call` event
   useWatchContractEvent({
     address: Constants.CALLBACK_CONTRACT as `0x${string}`,
     abi: callbackAbi,
-    eventName: 'ExampleClientEvent',
-    // onLogs: proofGeneratedAction,
+    eventName: 'AxiomV2Call',
     onLogs: (logs) => {
-      let txHash = logs[0].transactionHash;
-      router.push(`success/?txHash=${txHash}`);
+      let topics = logs[0].topics;
+      // check that the queryId is the same as the one we just sent
+      if (topics[3] && builtQuery?.queryId && BigInt(topics[3]) === BigInt(builtQuery?.queryId)) {
+        let txHash = logs[0].transactionHash;
+        router.push(`success/?txHash=${txHash}`);
+      }
     },
   });
 
@@ -78,7 +70,7 @@ export default function SubmitQuery({
       return null;
     }
     return (
-      <Link href={`https://explorer.axiom.xyz/v2/sepolia`} target="_blank">
+      <Link href={`${Constants.EXPLORER_BASE_URL}/query/${builtQuery?.queryId}`} target="_blank">
         View status on Axiom Explorer
       </Link>
     )
