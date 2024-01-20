@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: PageProps) {
         Average Balance Proof
       </Title>
       <div className="text-center">
-        Generate a ZK proof of your average ETH balance over the past 7,200 blocks (24 hours).
+        Access your average ETH balance over 8 evenly spaced blocks in the last 24 hours.
       </div>
       {renderButton()}
     </>

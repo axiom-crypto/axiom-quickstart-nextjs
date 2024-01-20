@@ -54,13 +54,13 @@ export default function SubmitQuery({
       return "Waiting for callback...";
     }
     if (isPending) {
-      return "Confrm transaction in wallet...";
+      return "Confirm transaction in wallet...";
     }
     return "Submit query";
   }
 
   const renderClaimProofText = () => {
-    return `Generating the proof for the claim costs ${formatEther(BigInt(builtQuery?.value ?? 0)).toString()}ETH`;
+    return `Generating the proof for the claim costs ${formatEther(BigInt(builtQuery?.value ?? 0)).toString()} ETH`;
   }
 
   const renderExplorerLink = () => {

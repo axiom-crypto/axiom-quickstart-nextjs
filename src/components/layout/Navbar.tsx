@@ -17,13 +17,13 @@ export default function Navbar() {
       </Link>
       <div className="flex flex-row items-center gap-4 sm:gap-8">
         <Link href="https://axiom.xyz">
-          Axiom
+          Axiom Homepage
         </Link>
-        <Link href="https://docs-v2.axiom.xyz/">
+        <Link href="https://docs.axiom.xyz/">
           Docs
         </Link>
-        <Link href="https://github.com/axiom-crypto/autonomous-airdrop-example">
-          Github
+        <Link href="https://github.com/axiom-crypto/axiom-scaffold-nextjs">
+          Source Code for this Scaffold
         </Link>
         <ConnectWallet/>
       </div>
