@@ -1,7 +1,4 @@
-'use client';
-
 import ConnectWallet from '@/components/ui/ConnectWallet'
-import LinkButton from '@/components/ui/LinkButton'
 import Title from '@/components/ui/Title'
 import { forwardSearchParams } from '@/lib/utils'
 import compiledCircuit from "../../axiom/data/compiled.json";
