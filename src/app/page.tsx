@@ -1,44 +1,31 @@
-'use client';
+"use client";
 
-import ConnectWallet from '@/components/ui/ConnectWallet'
-import LinkButton from '@/components/ui/LinkButton'
 import Title from '@/components/ui/Title'
 import { forwardSearchParams } from '@/lib/utils'
-import compiledCircuit from "../../axiom/data/compiled.json";
+import AdvanceStepButton from '@/components/ui/AdvanceStepButton';
+import CodeBox from '@/components/ui/CodeBox';
 import { useAccount } from 'wagmi';
 
-interface PageProps {
-  params: Params;
-  searchParams: SearchParams;
-}
+export default async function Home() {
+  const { address } = useAccount();
 
-interface Params {
-  slug: string;
-}
-
-interface SearchParams {
-  [key: string]: string | string[] | undefined;
-}
-
-export default async function Home({ searchParams }: PageProps) {
-  const { isConnected, address } = useAccount();
-
+  let compiledCircuit;
+  try {
+    compiledCircuit = require("../../axiom/data/compiled.json");
+  } catch (e) {
+    console.log(e);
+  }
   if (compiledCircuit === undefined) {
     return (
-      <div>
-        Compile circuit first!
-      </div>
+      <>
+        <div>
+          Compile circuit first by running in the root directory of this project:
+        </div>
+        <CodeBox>
+          {"npx axiom compile circuit app/axiom/average.circuit.ts"}
+        </CodeBox>
+      </>
     )
-  }
-
-  const renderButton = () => {
-    if (isConnected) {
-      return <LinkButton
-        label="Generate Proof"
-        href={"/prove?" + forwardSearchParams({ connected: address })}
-      />;
-    }
-    return <ConnectWallet />;
   }
 
   return (
@@ -49,7 +36,10 @@ export default async function Home({ searchParams }: PageProps) {
       <div className="text-center">
         Access your average ETH balance over 8 evenly spaced blocks in the last 24 hours.
       </div>
-      {renderButton()}
+      <AdvanceStepButton
+        label="Generate Proof"
+        href={"/prove?" + forwardSearchParams({ connected: address })}
+      />
     </>
   )
 }
