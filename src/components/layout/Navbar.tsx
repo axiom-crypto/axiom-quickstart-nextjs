@@ -23,7 +23,7 @@ export default function Navbar() {
           Docs
         </Link>
         <Link href="https://github.com/axiom-crypto/axiom-scaffold-nextjs">
-          Source Code for this Scaffold
+          Scaffold Source Code
         </Link>
         <ConnectWallet/>
       </div>

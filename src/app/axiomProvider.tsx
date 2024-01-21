@@ -15,7 +15,7 @@ export default function AxiomProvider({
   return (
     <AxiomCircuitProvider
       compiledCircuit={compiledCircuit}
-      provider={process.env.NEXT_PUBLIC_ALCHEMY_URI_SEPOLIA as string}
+      provider={process.env.NEXT_PUBLIC_PROVIDER_URI_SEPOLIA as string}
       chainId={"11155111"}
     >
       {mounted && children}
