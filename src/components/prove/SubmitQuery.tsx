@@ -9,9 +9,10 @@ import {
 } from "wagmi";
 import Button from "../ui/Button";
 import { useRouter } from "next/navigation";
-import { formatEther } from "viem";
+import { formatEther, formatUnits } from "viem";
 import Link from "next/link";
 import { useAxiomCircuit } from '@axiom-crypto/react';
+import Decimals from "../ui/Decimals";
 
 export default function SubmitQuery({
   callbackAbi,
@@ -59,8 +60,25 @@ export default function SubmitQuery({
     return "Submit query";
   }
 
-  const renderClaimProofText = () => {
-    return `Generating the proof for the claim costs ${formatEther(BigInt(builtQuery?.value ?? 0)).toString()} ETH`;
+  const renderClaimProofCostText = () => {
+    return (
+      <div className="flex flex-col items-center text-sm mt-2">
+        <div>
+          {"Generating the proof for this query costs up to "}
+          <Decimals>
+            {formatEther(BigInt(builtQuery?.value ?? 0)).toString()}
+          </Decimals>
+          {" ETH"}
+        </div>
+        <div>
+          {"(Based on a current maxFeePerGas of "}
+          <Decimals>
+            {formatUnits(builtQuery?.args?.[4]?.maxFeePerGas ?? "0", 9).toString()}
+          </Decimals>
+          {" gwei)"}
+        </div>
+      </div>
+    )
   }
 
   const renderExplorerLink = () => {
@@ -84,7 +102,7 @@ export default function SubmitQuery({
       </Button>
       <div className="flex flex-col items-center text-sm gap-2">
         <div>
-          {isSuccess ? "Proof generation may take up to 3 minutes" : renderClaimProofText()}
+          {isSuccess ? "Proof generation may take up to 3 minutes" : renderClaimProofCostText()}
         </div>
         {renderExplorerLink()}
       </div>
