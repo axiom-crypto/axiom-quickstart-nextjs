@@ -8,7 +8,6 @@ import {
   CircuitValue,
   CircuitValue256,
   constant,
-  witness,
   getAccount,
 } from "@axiom-crypto/client";
 
