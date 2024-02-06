@@ -1,18 +1,7 @@
 import { http, createConfig } from 'wagmi'
 import { sepolia } from 'wagmi/chains'
 import { injected, walletConnect } from 'wagmi/connectors'
-import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 import { createWeb3Modal } from '@web3modal/wagmi/react';
-
-// export const wagmiConfig = createConfig({
-//   chains: [sepolia],
-//   connectors: [
-//     injected(),
-//   ],
-//   transports: {
-//     [sepolia.id]: http(process.env.NEXT_PUBLIC_PROVIDER_URI_SEPOLIA),
-//   },
-// })
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string;
 
@@ -33,12 +22,6 @@ export const wagmiConfig = createConfig({
     injected({ shimDisconnect: true }),
   ]
 });
-
-// export const wagmiConfig = defaultWagmiConfig({
-//   projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string,
-//   chains: [sepolia],
-//   metadata,
-// });
 
 createWeb3Modal({
   projectId,

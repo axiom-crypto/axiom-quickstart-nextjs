@@ -28,7 +28,6 @@ export default function BuildQuery({
   } = useAxiomCircuit<typeof jsonInputs>();
 
   useEffect(() => {
-    console.log(inputs, callbackAddress, callbackExtraData, refundee);
     setParams(inputs, callbackAddress, callbackExtraData, refundee);
   }, [setParams, inputs, callbackAddress, callbackExtraData, refundee]);
 
@@ -39,7 +38,6 @@ export default function BuildQuery({
       }
       await build();
     };
-    console.log("BQ");
     buildQuery();
   }, [build, areParamsSet]);
 
