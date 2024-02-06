@@ -1,7 +1,7 @@
 "use client";
 
 import { Constants } from "@/shared/constants"
-import Button from "./Button"
+import Button from "../ui/Button"
 import { SwitchChainMutate } from "wagmi/query";
 import { Config } from "wagmi";
 

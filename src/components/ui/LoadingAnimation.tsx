@@ -2,7 +2,7 @@ export default function LoadingAnimation() {
   return (
     <svg version="1.1" id="L4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 100 100" enableBackground="new 0 0 0 0" xmlSpace="preserve" width="36px" height="36px">
-      <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
+      <circle fill="#333" stroke="none" cx="6" cy="50" r="6">
         <animate
           attributeName="opacity"
           dur="1s"
@@ -10,7 +10,7 @@ export default function LoadingAnimation() {
           repeatCount="indefinite"
           begin="0.1" />
       </circle>
-      <circle fill="#fff" stroke="none" cx="26" cy="50" r="6">
+      <circle fill="#333" stroke="none" cx="26" cy="50" r="6">
         <animate
           attributeName="opacity"
           dur="1s"
@@ -18,7 +18,7 @@ export default function LoadingAnimation() {
           repeatCount="indefinite"
           begin="0.2" />
       </circle>
-      <circle fill="#fff" stroke="none" cx="46" cy="50" r="6">
+      <circle fill="#333" stroke="none" cx="46" cy="50" r="6">
         <animate
           attributeName="opacity"
           dur="1s"

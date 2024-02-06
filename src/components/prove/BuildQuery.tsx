@@ -28,6 +28,7 @@ export default function BuildQuery({
   } = useAxiomCircuit<typeof jsonInputs>();
 
   useEffect(() => {
+    console.log(inputs, callbackAddress, callbackExtraData, refundee);
     setParams(inputs, callbackAddress, callbackExtraData, refundee);
   }, [setParams, inputs, callbackAddress, callbackExtraData, refundee]);
 
@@ -38,12 +39,13 @@ export default function BuildQuery({
       }
       await build();
     };
+    console.log("BQ");
     buildQuery();
   }, [build, areParamsSet]);
 
   if (!builtQuery) {
     return (
-      <div className="flex flex-row items-center font-mono gap-2">
+      <div className="flex flex-row items-center gap-2">
         {"Building Query"} <LoadingAnimation />
       </div>
     );
