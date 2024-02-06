@@ -18,15 +18,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <AxiomProvider>
           <main className="flex flex-col w-screen min-h-screen justify-start items-center">
             <MainLayout>
-              
+              <AxiomProvider>
                 {children}
-              
+              </AxiomProvider>
             </MainLayout>
           </main>
-          </AxiomProvider>
         </Providers>
       </body>
     </html>
