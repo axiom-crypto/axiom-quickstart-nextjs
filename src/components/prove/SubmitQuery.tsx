@@ -62,7 +62,7 @@ export default function SubmitQuery({
 
   const renderClaimProofCostText = () => {
     return (
-      <div className="flex flex-col items-center text-sm mt-2">
+      <div className="flex flex-col items-center text-xs text-midtone mt-2">
         <div>
           {"Generating the proof for this query costs up to "}
           <Decimals>

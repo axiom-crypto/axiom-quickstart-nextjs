@@ -6,7 +6,7 @@ import AdvanceStepButton from '@/components/ui/AdvanceStepButton';
 import CodeBox from '@/components/ui/CodeBox';
 import { useAccount } from 'wagmi';
 
-export default async function Home() {
+export default function Home() {
   const { address } = useAccount();
 
   let compiledCircuit;

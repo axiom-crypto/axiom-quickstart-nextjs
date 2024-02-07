@@ -1,5 +1,7 @@
 "use client";
 
+import { classes } from "@/lib/utils";
+
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
@@ -14,7 +16,7 @@ export default function Button(props: ButtonProps) {
     return (
       <button
         disabled={true}
-        className="px-4 py-2 bg-container-main text-darkline font-mono cursor-not-allowed"
+        className="px-4 py-2 bg-container-main text-midtone cursor-not-allowed"
       >
         {children}
       </button>
@@ -25,7 +27,11 @@ export default function Button(props: ButtonProps) {
     <button
       onClick={onClick || emptyFn}
       type={props.type || "button"}
-      className="text-highlight text-md font-mono border-[1px] border-highlight bg-buttonbg px-4 py-2 hover:bg-buttonbg-hover hover:text-white duration-300 cursor-pointer"
+      className={classes(
+        "text-light hover:text-dark duration-300 cursor-pointer",
+        "text-xs sm:text-sm lg:text-base font-bold",
+        "border-[1px] border-highlight bg-accent px-4 py-2 hover:bg-highlight",
+      )}
     >
       {children}
     </button>

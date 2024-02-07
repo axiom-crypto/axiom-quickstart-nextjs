@@ -28,6 +28,9 @@ export default async function Success({ searchParams }: PageProps) {
       <Link href={`https://sepolia.etherscan.io/tx/${txHash}`} target="_blank">
         View on Etherscan
       </Link>
+      <Link href="/">
+        Start over
+      </Link>
     </>
   )
 }
