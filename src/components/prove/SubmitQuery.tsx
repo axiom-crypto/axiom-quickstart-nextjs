@@ -24,7 +24,14 @@ export default function SubmitQuery({
   const [showExplorerLink, setShowExplorerLink] = useState(false);
 
   // Prepare hook for the sendQuery transaction
-  const { data } = useSimulateContract(builtQuery!);
+  // Note: builtQuery should not be null because we check this in BuildQuery.tsx
+  const { data } = useSimulateContract({
+    address: builtQuery!.address as `0x${string}`,
+    abi: builtQuery!.abi,
+    functionName: builtQuery!.functionName,
+    value: builtQuery!.value,
+    args: builtQuery!.args,
+  });
   const { writeContract, isSuccess, isError, isPending } = useWriteContract();
 
   useEffect(() => {
