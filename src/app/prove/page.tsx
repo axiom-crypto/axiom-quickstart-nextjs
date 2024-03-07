@@ -40,7 +40,7 @@ export default async function Prove({ searchParams }: PageProps) {
       <div className="flex flex-col gap-2 items-center">
         <BuildQuery
           inputs={inputs}
-          callbackAddress={Constants.CALLBACK_CONTRACT}
+          callbackTarget={Constants.CALLBACK_CONTRACT}
           callbackExtraData={bytes32(connected)}
           refundee={connected}
           callbackAbi={callbackAbi}

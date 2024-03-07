@@ -9,13 +9,13 @@ import SubmitQuery from "./SubmitQuery";
 
 export default function BuildQuery({
   inputs,
-  callbackAddress,
+  callbackTarget,
   callbackExtraData,
   refundee,
   callbackAbi
 }: {
   inputs: UserInput<typeof jsonInputs>;
-  callbackAddress: string;
+  callbackTarget: string;
   callbackExtraData: string;
   refundee: string;
   callbackAbi: any[];
@@ -28,8 +28,8 @@ export default function BuildQuery({
   } = useAxiomCircuit<typeof jsonInputs>();
 
   useEffect(() => {
-    setParams(inputs, callbackAddress, callbackExtraData, refundee);
-  }, [setParams, inputs, callbackAddress, callbackExtraData, refundee]);
+    setParams(inputs, callbackTarget, callbackExtraData, refundee);
+  }, [setParams, inputs, callbackTarget, callbackExtraData, refundee]);
 
   useEffect(() => {
     const buildQuery = async () => {
