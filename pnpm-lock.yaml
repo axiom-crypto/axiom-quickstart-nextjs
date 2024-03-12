@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@axiom-crypto/client':
-    specifier: 2.0.5
-    version: 2.0.5(typescript@5.2.2)
+    specifier: 2.0.6
+    version: 2.0.6(typescript@5.2.2)
   '@axiom-crypto/react':
-    specifier: 2.0.5
-    version: 2.0.5(@axiom-crypto/client@2.0.5)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 2.0.6
+    version: 2.0.6(@axiom-crypto/client@2.0.6)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query':
     specifier: ^5.17.12
     version: 5.17.12(react@18.2.0)
@@ -90,8 +90,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.21
     dev: false
 
-  /@axiom-crypto/circuit@2.0.5(typescript@5.2.2):
-    resolution: {integrity: sha512-LlQm2OVcGjqQbTIhDTUUYCQW12eJ2ECfZrcKQcRaQtL0UsfvV3WqYUtTqB2eYlO39NQ2xT6LDlvxovJCoRhqSg==}
+  /@axiom-crypto/circuit@2.0.6(typescript@5.2.2):
+    resolution: {integrity: sha512-zAs0FPtPc8uKX8kt1q8+bX89fJO+z1L017Dp6jkknMpM88psiXk4bDXNTvGPv5mDRq+xoiXbsSx1tGX/I0YtPQ==}
     dependencies:
       '@axiom-crypto/core': 2.3.7
       '@axiom-crypto/halo2-lib-js': 0.3.4
@@ -108,11 +108,11 @@ packages:
       - zod
     dev: false
 
-  /@axiom-crypto/client@2.0.5(typescript@5.2.2):
-    resolution: {integrity: sha512-zTFFHOA+v1B/N7Fl8/IOdJNYaphGrcN+pdLD+M1SsZeyXm/lpTDHa7Xx6e60/OaqEOOvKb+394/rDoSq15Uysw==}
+  /@axiom-crypto/client@2.0.6(typescript@5.2.2):
+    resolution: {integrity: sha512-jFqHOtYqV5g8J6E8mejQv3DCdmaK/9vO6ghZVZc7Ny3bGAnitfqLRbaE8PMouhVEGV9dOksLsvHkEwCz2nmsPw==}
     hasBin: true
     dependencies:
-      '@axiom-crypto/circuit': 2.0.5(typescript@5.2.2)
+      '@axiom-crypto/circuit': 2.0.6(typescript@5.2.2)
       '@axiom-crypto/core': 2.3.7
       chalk: 4.1.2
       commander: 11.1.0
@@ -130,7 +130,7 @@ packages:
     resolution: {integrity: sha512-ioY5rkmQLYsHbnp9FUhAx2HfBovBLxdpPfRGkpAavHWoojo2aplWzBp9FXfyeGn2X0MMwX9RrP+Ir5inx1SXcA==}
     dependencies:
       '@axiom-crypto/tools': 2.1.0
-      axios: 1.6.5
+      axios: 1.6.7
       bs58: 5.0.0
       ethers: 6.10.0
       merkletreejs: 0.3.11
@@ -155,15 +155,15 @@ packages:
     resolution: {integrity: sha512-SUHXnydtx5rY0gQ2zWy0Br6L3iaAFo5RH/AMnOCSM4Nb3inqinBEnXQgEPZ45+EFmeOfRi1xOVUBdo6keZlacQ==}
     dev: false
 
-  /@axiom-crypto/react@2.0.5(@axiom-crypto/client@2.0.5)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-RZ0iOfYJA4ha67s5eHi7N9v/T28n1rKjMkhWgTcvfCCZeTEHoK/RjzgN/RhenSJcR8gZjgpt6PiQsnUZwWJfvQ==}
+  /@axiom-crypto/react@2.0.6(@axiom-crypto/client@2.0.6)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GLwJ8tt2gcguDaCeUjJs2PjUlSuKrdHbrxNvT5Hdg3DIZ7WzNOP+iBPbfL4N331TfBCa0T5ZoIDT5+ImIGV5MA==}
     peerDependencies:
-      '@axiom-crypto/client': 2.0.5
+      '@axiom-crypto/client': 2.0.6
       '@types/react': '>=18.1.0'
       react: '>=18.1.0'
       react-dom: '>=18.1.0'
     dependencies:
-      '@axiom-crypto/client': 2.0.5(typescript@5.2.2)
+      '@axiom-crypto/client': 2.0.6(typescript@5.2.2)
       '@types/react': 18.2.48
       comlink: 4.4.1
       react: 18.2.0
@@ -4228,16 +4228,6 @@ packages:
   /axe-core@4.7.0:
     resolution: {integrity: sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==}
     engines: {node: '>=4'}
-    dev: false
-
-  /axios@1.6.5:
-    resolution: {integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==}
-    dependencies:
-      follow-redirects: 1.15.5
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
     dev: false
 
   /axios@1.6.7:
