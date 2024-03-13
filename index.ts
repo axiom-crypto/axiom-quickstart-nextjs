@@ -1,0 +1,1 @@
+console.warn("If you have arrived here from `npx create-axiom-client`, please run `pnpm dev` from the root of the app/ folder.");
