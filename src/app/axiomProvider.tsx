@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AxiomCircuitProvider } from "@axiom-crypto/react";
-import compiledCircuit from "../../axiom/data/compiled.json";
+import { AxiomSettings } from "@/lib/axiomSettings";
 
 export default function AxiomProvider({
   children
@@ -14,9 +14,9 @@ export default function AxiomProvider({
 
   return (
     <AxiomCircuitProvider
-      compiledCircuit={compiledCircuit}
-      provider={process.env.NEXT_PUBLIC_PROVIDER_URI_SEPOLIA as string}
-      chainId={"11155111"}
+      compiledCircuit={AxiomSettings.compiledCircuit}
+      provider={AxiomSettings.provider}
+      chainId={AxiomSettings.chainId}
     >
       {mounted && children}
     </AxiomCircuitProvider>

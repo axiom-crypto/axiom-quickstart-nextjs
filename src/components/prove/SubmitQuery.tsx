@@ -13,12 +13,9 @@ import { formatEther, formatUnits } from "viem";
 import Link from "next/link";
 import { useAxiomCircuit } from '@axiom-crypto/react';
 import Decimals from "../ui/Decimals";
+import { AxiomSettings } from "@/lib/axiomSettings";
 
-export default function SubmitQuery({
-  callbackAbi,
-}: {
-  callbackAbi: any[],
-}) {
+export default function SubmitQuery() {
   const router = useRouter();
   const { builtQuery } = useAxiomCircuit();
   const [showExplorerLink, setShowExplorerLink] = useState(false);
@@ -44,8 +41,8 @@ export default function SubmitQuery({
 
   // Monitor contract for `AxiomV2Call` event
   useWatchContractEvent({
-    address: Constants.CALLBACK_CONTRACT as `0x${string}`,
-    abi: callbackAbi,
+    address: AxiomSettings.callbackTarget as `0x${string}`,
+    abi: AxiomSettings.callbackAbi,
     eventName: 'AxiomV2Call',
     onLogs: (logs) => {
       let topics = logs[0].topics;
