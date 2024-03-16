@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AxiomCircuitProvider } from "@axiom-crypto/react";
-import { AxiomSettings } from "@/lib/axiomSettings";
+import { WebappSettings } from "@/lib/webappSettings";
 
 export default function AxiomProvider({
   children
@@ -14,9 +14,9 @@ export default function AxiomProvider({
 
   return (
     <AxiomCircuitProvider
-      compiledCircuit={AxiomSettings.compiledCircuit}
-      provider={AxiomSettings.provider}
-      chainId={AxiomSettings.chainId}
+      compiledCircuit={WebappSettings.compiledCircuit}
+      provider={WebappSettings.provider}
+      chainId={WebappSettings.chainId}
     >
       {mounted && children}
     </AxiomCircuitProvider>

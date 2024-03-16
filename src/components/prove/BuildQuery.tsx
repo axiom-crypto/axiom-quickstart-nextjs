@@ -5,7 +5,7 @@ import { UserInput } from "@axiom-crypto/client";
 import { useEffect } from "react";
 import LoadingAnimation from "../ui/LoadingAnimation";
 import SubmitQuery from "./SubmitQuery";
-import { AxiomSettings } from "@/lib/axiomSettings";
+import { WebappSettings } from "@/lib/webappSettings";
 
 export default function BuildQuery({
   inputs,
@@ -13,7 +13,7 @@ export default function BuildQuery({
   callbackExtraData,
   refundee,
 }: {
-  inputs: UserInput<typeof AxiomSettings.inputs>;
+  inputs: UserInput<typeof WebappSettings.inputs>;
   callbackTarget: string;
   callbackExtraData: string;
   refundee: string;
@@ -23,7 +23,7 @@ export default function BuildQuery({
     builtQuery,
     setParams,
     areParamsSet
-  } = useAxiomCircuit<typeof AxiomSettings.inputs>();
+  } = useAxiomCircuit<typeof WebappSettings.inputs>();
 
   useEffect(() => {
     setParams(inputs, callbackTarget, callbackExtraData, refundee);

@@ -3,7 +3,7 @@ import Title from "@/components/ui/Title";
 import { bytes32 } from "@/lib/utils";
 import { publicClient } from "@/lib/viemClient";
 import { UserInput } from "@axiom-crypto/client";
-import { AxiomSettings } from "@/lib/axiomSettings";
+import { WebappSettings } from "@/lib/webappSettings";
 
 interface PageProps {
   params: Params;
@@ -24,7 +24,7 @@ export default async function Prove({ searchParams }: PageProps) {
   const blockNumber = await publicClient.getBlockNumber();
 
   // We get the user inputs from the URL query parameters and connected wallet
-  const inputs: UserInput<typeof AxiomSettings.inputs> = {
+  const inputs: UserInput<typeof WebappSettings.inputs> = {
     blockNumber: Number(blockNumber),
     address: connected,
   }
@@ -40,7 +40,7 @@ export default async function Prove({ searchParams }: PageProps) {
       <div className="flex flex-col gap-2 items-center">
         <BuildQuery
           inputs={inputs}
-          callbackTarget={AxiomSettings.callbackTarget}
+          callbackTarget={WebappSettings.callbackTarget}
           callbackExtraData={bytes32(connected)}
           refundee={connected}
         />

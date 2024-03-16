@@ -2,7 +2,7 @@ import compiledCircuit from "../../axiom/data/compiled.json";
 import inputs from "../../axiom/data/inputs.json";
 import AverageBalanceAbi from "./abi/AverageBalance.json";
 
-export const AxiomSettings = {
+export const WebappSettings = {
   compiledCircuit,
   inputs,
   provider: process.env.NEXT_PUBLIC_PROVIDER_URI_SEPOLIA as string,
