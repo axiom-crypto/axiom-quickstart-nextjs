@@ -6,7 +6,7 @@ import { SwitchChainMutate } from "wagmi/query";
 import { Config } from "wagmi";
 
 export default function SwitchChainButton({ switchChain }: {
-  switchChain: SwitchChainMutate<Config, unknown>;// (input: { [chainId: string]: number }) => void
+  switchChain: SwitchChainMutate<Config, unknown>;
 }) {
   return (
     <Button onClick={() => switchChain({ chainId: Constants.CHAIN_ID_SEPOLIA })}>

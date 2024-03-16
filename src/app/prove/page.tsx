@@ -1,11 +1,9 @@
 import BuildQuery from "@/components/prove/BuildQuery";
 import Title from "@/components/ui/Title";
-import callbackAbi from '@/lib/abi/AverageBalance.json';
-import jsonInputs from "../../../axiom/data/inputs.json";
 import { bytes32 } from "@/lib/utils";
 import { publicClient } from "@/lib/viemClient";
-import { Constants } from "@/shared/constants";
 import { UserInput } from "@axiom-crypto/client";
+import { WebappSettings } from "@/lib/webappSettings";
 
 interface PageProps {
   params: Params;
@@ -24,7 +22,9 @@ export default async function Prove({ searchParams }: PageProps) {
   const connected = searchParams?.connected as string ?? "";
 
   const blockNumber = await publicClient.getBlockNumber();
-  const inputs: UserInput<typeof jsonInputs> = {
+
+  // We get the user inputs from the URL query parameters and connected wallet
+  const inputs: UserInput<typeof WebappSettings.inputs> = {
     blockNumber: Number(blockNumber),
     address: connected,
   }
@@ -40,10 +40,9 @@ export default async function Prove({ searchParams }: PageProps) {
       <div className="flex flex-col gap-2 items-center">
         <BuildQuery
           inputs={inputs}
-          callbackTarget={Constants.CALLBACK_CONTRACT}
+          callbackTarget={WebappSettings.callbackTarget}
           callbackExtraData={bytes32(connected)}
           refundee={connected}
-          callbackAbi={callbackAbi}
         />
       </div>
     </>
