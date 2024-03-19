@@ -9,4 +9,5 @@ export const WebappSettings = {
   chainId: "11155111",
   callbackTarget: "0x50F2D5c9a4A35cb922a631019287881f56A00ED5",
   callbackAbi: AverageBalanceAbi,
+  explorerBaseUrl: "https://explorer.axiom.xyz/v2/sepolia",
 }

@@ -1,15 +1,15 @@
 "use client";
 
-import { Constants } from "@/shared/constants"
 import Button from "../ui/Button"
 import { SwitchChainMutate } from "wagmi/query";
 import { Config } from "wagmi";
+import { WebappSettings } from "@/lib/webappSettings";
 
 export default function SwitchChainButton({ switchChain }: {
   switchChain: SwitchChainMutate<Config, unknown>;
 }) {
   return (
-    <Button onClick={() => switchChain({ chainId: Constants.CHAIN_ID_SEPOLIA })}>
+    <Button onClick={() => switchChain({ chainId: Number(WebappSettings.chainId) })}>
       Switch to Sepolia
     </Button>
   )
