@@ -1,9 +1,8 @@
 import { http, createConfig } from 'wagmi'
-import { sepolia } from 'wagmi/chains'
 import { injected, walletConnect } from 'wagmi/connectors'
 import { createWeb3Modal } from '@web3modal/wagmi/react';
-
-const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string;
+import { CHAIN_ID, PROJECT_ID } from './webappSettings';
+import { chainIdToViemChain } from './utils';
 
 const metadata = {
   name: 'Axiom Next.js Scaffold',
@@ -13,17 +12,17 @@ const metadata = {
 }
 
 export const wagmiConfig = createConfig({
-  chains: [sepolia],
+  chains: [chainIdToViemChain(CHAIN_ID)],
   transports: {
-    [sepolia.id]: http(process.env.NEXT_PUBLIC_PROVIDER_URI_SEPOLIA as string)
+    [Number(CHAIN_ID)]: http(process.env[`NEXT_PUBLIC_PROVIDER_URI_${CHAIN_ID}`] as string)
   },
   connectors: [
-    walletConnect({ projectId, metadata, showQrModal: false }),
+    walletConnect({ projectId: PROJECT_ID, metadata, showQrModal: false }),
     injected({ shimDisconnect: true }),
   ]
 });
 
 createWeb3Modal({
-  projectId,
+  projectId: PROJECT_ID,
   wagmiConfig,
-})
+});

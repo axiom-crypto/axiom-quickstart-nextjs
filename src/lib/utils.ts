@@ -1,3 +1,55 @@
+import { Chain } from 'viem'
+import { base, baseSepolia, mainnet, sepolia } from 'viem/chains'
+
+// Unfortunately, dynamic environment variables are not supported in Next.js
+// so we can't just do process.env[`NEXT_PUBLIC_PROVIDER_URI_${CHAIN_ID}`].
+// We'll need to do something like this to get the provider URI.
+export const getProviderClientSide = (chainId: string): string => {
+  switch (chainId) {
+    case "1":
+      return process.env.NEXT_PUBLIC_PROVIDER_URI_1 as string;
+    case "11155111":
+      return process.env.NEXT_PUBLIC_PROVIDER_URI_11155111 as string;
+    case "8453":
+      return process.env.NEXT_PUBLIC_PROVIDER_URI_8453 as string;
+    case "84532":
+      return process.env.NEXT_PUBLIC_PROVIDER_URI_84532 as string;
+    default:
+      throw new Error(`Unsupported chainId: ${chainId}`)
+  }
+}
+
+export const chainIdToViemChain = (chainId: string): Chain => {
+  switch (chainId) {
+    case "1":
+      return mainnet;
+    case "11155111":
+      return sepolia;
+    case "8453":
+      return base;
+    case "84532":
+      return baseSepolia;
+    default:
+      throw new Error(`Unsupported chainId: ${chainId}`)
+  }
+};
+
+export const chainIdToExplorerBaseUrl = (chainId: string): string => {
+  switch (chainId) {
+    case "1":
+      return "https://explorer.axiom.xyz/v2/mainnet";
+    case "11155111":
+      return "https://explorer.axiom.xyz/v2/sepolia";
+    case "8453":
+      return "https://explorer.axiom.xyz/v2/base";
+    case "84532":
+      return "https://explorer.axiom.xyz/v2/base-sepolia";
+    default:
+      throw new Error(`Unsupported chainId: ${chainId}`)
+  }
+}
+
+
 const truncateRegex = /^(0x[a-zA-Z0-9]{4})[a-zA-Z0-9]+([a-zA-Z0-9]{4})$/;
 
 export const shortenAddress = (address: string) => {
