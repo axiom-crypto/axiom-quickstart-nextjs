@@ -1,7 +1,8 @@
 import { createPublicClient, http } from 'viem'
-import { sepolia } from 'viem/chains'
+import { CHAIN_ID, WebappSettings } from './webappSettings';
+import { chainIdToViemChain } from './utils';
 
 export const publicClient = createPublicClient({
-  chain: sepolia,
-  transport: http()
-})
+  chain: chainIdToViemChain(CHAIN_ID),
+  transport: http(WebappSettings.provider)
+});
