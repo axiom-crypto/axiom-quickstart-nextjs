@@ -17,7 +17,7 @@ export const WebappSettings = {
 }
 
 if (WebappSettings.provider === "") {
-  throw new Error(`Please set the NEXT_PUBLIC_PROVIDER_URI_${CHAIN_ID} environment variable to a valid provider URI.`);
+  throw new Error(`Please set the NEXT_PUBLIC_RPC_URL_${CHAIN_ID} environment variable to a valid provider URI.`);
 }
 
 if (WebappSettings.callbackTarget === "") {
