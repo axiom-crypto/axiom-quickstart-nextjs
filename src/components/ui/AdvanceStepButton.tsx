@@ -19,7 +19,7 @@ export default function AdvanceStepButton({ label, href, selected, disabled }:{
   if (!isConnected) {
     return <ConnectWallet />
   }
-  if (chainId !== Number(WebappSettings.chainId)) {
+  if (chainId !== Number(WebappSettings.targetChainId)) {
     return <SwitchChainButton switchChain={switchChain} />
   }
   return (

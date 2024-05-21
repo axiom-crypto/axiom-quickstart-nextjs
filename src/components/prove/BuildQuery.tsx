@@ -1,6 +1,6 @@
 "use client";
 
-import { useAxiomCircuit } from "@axiom-crypto/react";
+import { useAxiomCrosschainCircuit } from "@axiom-crypto/react";
 import { UserInput } from "@axiom-crypto/client";
 import { useEffect } from "react";
 import LoadingAnimation from "../ui/LoadingAnimation";
@@ -23,7 +23,7 @@ export default function BuildQuery({
     builtQuery,
     setParams,
     areParamsSet
-  } = useAxiomCircuit<typeof WebappSettings.inputs>();
+  } = useAxiomCrosschainCircuit<typeof WebappSettings.inputs>();
 
   useEffect(() => {
     setParams(inputs, callbackTarget, callbackExtraData, refundee);
@@ -46,6 +46,7 @@ export default function BuildQuery({
       </div>
     );
   }
+  console.log("built query: ", builtQuery);
 
   return <SubmitQuery />;
 }

@@ -1,7 +1,7 @@
 import BuildQuery from "@/components/prove/BuildQuery";
 import Title from "@/components/ui/Title";
 import { bytes32 } from "@/lib/utils";
-import { publicClient } from "@/lib/viemClient";
+import { sourcePublicClient } from "@/lib/viemClient";
 import { UserInput } from "@axiom-crypto/client";
 import { WebappSettings } from "@/lib/webappSettings";
 
@@ -21,7 +21,7 @@ interface SearchParams {
 export default async function Prove({ searchParams }: PageProps) {
   const connected = searchParams?.connected as string ?? "";
 
-  const blockNumber = await publicClient.getBlockNumber();
+  const blockNumber = await sourcePublicClient.getBlockNumber();
 
   // We get the user inputs from the URL query parameters and connected wallet
   const inputs: UserInput<typeof WebappSettings.inputs> = {
