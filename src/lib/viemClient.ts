@@ -4,5 +4,5 @@ import { chainIdToViemChain } from './utils';
 
 export const publicClient = createPublicClient({
   chain: chainIdToViemChain(CHAIN_ID),
-  transport: http(WebappSettings.provider)
+  transport: http(WebappSettings.rpcUrl)
 });

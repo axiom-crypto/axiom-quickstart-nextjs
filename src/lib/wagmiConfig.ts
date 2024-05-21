@@ -14,7 +14,7 @@ const metadata = {
 export const wagmiConfig = createConfig({
   chains: [chainIdToViemChain(CHAIN_ID)],
   transports: {
-    [Number(CHAIN_ID)]: http(process.env[`NEXT_PUBLIC_PROVIDER_URI_${CHAIN_ID}`] as string)
+    [Number(CHAIN_ID)]: http(process.env[`NEXT_PUBLIC_RPC_URL_${CHAIN_ID}`] as string)
   },
   connectors: [
     walletConnect({ projectId: PROJECT_ID, metadata, showQrModal: false }),
