@@ -46,6 +46,7 @@ export default function BuildQuery({
       </div>
     );
   }
+  console.log("builtQuery:", builtQuery);
 
   return <SubmitQuery />;
 }
