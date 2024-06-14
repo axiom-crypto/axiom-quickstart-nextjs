@@ -5,7 +5,7 @@ import ConnectWallet from '@/components/web3/ConnectWallet'
 import { useAccount, useSwitchChain } from "wagmi";
 import SwitchChainButton from "./SwitchChainButton";
 import Button from "../ui/Button";
-import { WebappSettings } from "@/lib/settings-crosschain/webappSettings";
+import { WebappSettings } from "@/lib/settings-samechain/webappSettings";
 
 export default function AdvanceStepButton({ label, href, selected, disabled }:{
   label: string,
@@ -18,7 +18,7 @@ export default function AdvanceStepButton({ label, href, selected, disabled }:{
   if (!isConnected) {
     return <ConnectWallet />
   }
-  if (chainId !== Number(WebappSettings.targetChainId)) {
+  if (chainId !== Number(WebappSettings.chainId)) {
     return <SwitchChainButton switchChain={switchChain} />
   }
   return (

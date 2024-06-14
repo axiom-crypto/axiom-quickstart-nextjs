@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { formatEther, formatUnits } from "viem";
 import Link from "next/link";
 import { useAxiomCircuit } from '@axiom-crypto/react';
-import { WebappSettings } from "@/lib/settings-crosschain/webappSettings";
+import { WebappSettings } from "@/lib/settings-samechain/webappSettings";
 
 export default function SubmitQuery() {
   const router = useRouter();

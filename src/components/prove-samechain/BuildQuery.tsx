@@ -5,7 +5,7 @@ import { UserInput } from "@axiom-crypto/client";
 import { useEffect } from "react";
 import LoadingAnimation from "../ui/LoadingAnimation";
 import SubmitQuery from "./SubmitQuery";
-import { WebappSettings } from "@/lib/settings-crosschain/webappSettings";
+import { WebappSettings } from "@/lib/settings-samechain/webappSettings";
 
 export default function BuildQuery({
   inputs,

@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import Providers from './providers-crosschain'
+import Providers from './providers-samechain'
 import MainLayout from '@/components/layout/MainLayout';
 
 export const metadata: Metadata = {

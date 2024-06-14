@@ -2,7 +2,7 @@
 
 import Title from '@/components/ui/Title'
 import { forwardSearchParams } from '@/lib/utils'
-import AdvanceStepButton from '@/components/buttons-crosschain/AdvanceStepButton';
+import AdvanceStepButton from '@/components/buttons-samechain/AdvanceStepButton';
 import CodeBox from '@/components/ui/CodeBox';
 import { useAccount } from 'wagmi';
 
