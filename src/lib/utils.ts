@@ -4,7 +4,7 @@ import { base, baseSepolia, mainnet, sepolia } from 'viem/chains'
 // Unfortunately, dynamic environment variables are not supported in Next.js
 // so we can't just do process.env[`NEXT_PUBLIC_RPC_URL_${CHAIN_ID}`].
 // We'll need to do something like this to get the provider URI.
-export const getProviderClientSide = (chainId: string): string => {
+export const getRpcUrlClientSide = (chainId: string): string => {
   switch (chainId) {
     case "1":
       return process.env.NEXT_PUBLIC_RPC_URL_1 as string;

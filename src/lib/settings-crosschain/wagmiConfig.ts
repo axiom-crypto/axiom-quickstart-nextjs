@@ -2,7 +2,7 @@ import { http, createConfig } from 'wagmi'
 import { injected, walletConnect } from 'wagmi/connectors'
 import { createWeb3Modal } from '@web3modal/wagmi/react';
 import { SOURCE_CHAIN_ID, TARGET_CHAIN_ID, PROJECT_ID } from './webappSettings';
-import { chainIdToViemChain } from './utils';
+import { chainIdToViemChain } from '../utils';
 
 const metadata = {
   name: 'Axiom Next.js Scaffold',

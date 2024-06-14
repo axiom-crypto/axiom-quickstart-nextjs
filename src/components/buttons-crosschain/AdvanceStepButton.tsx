@@ -1,12 +1,11 @@
 "use client";
 
-import { classes } from "@/lib/utils";
 import Link from "next/link";
 import ConnectWallet from '@/components/web3/ConnectWallet'
 import { useAccount, useSwitchChain } from "wagmi";
-import SwitchChainButton from "../web3/SwitchChainButton";
-import Button from "./Button";
-import { WebappSettings } from "@/lib/webappSettings";
+import SwitchChainButton from "./SwitchChainButton";
+import Button from "../ui/Button";
+import { WebappSettings } from "@/lib/settings-crosschain/webappSettings";
 
 export default function AdvanceStepButton({ label, href, selected, disabled }:{
   label: string,
