@@ -9,7 +9,7 @@ export const SOURCE_CHAIN_ID = "11155111";
 export const WebappSettings = {
   compiledCircuit,
   inputs,
-  rpcUrl: process.env.NEXT_PUBLIC_RPC_URL_11155111!,
+  rpcUrl: getRpcUrlClientSide(SOURCE_CHAIN_ID),
   chainId: SOURCE_CHAIN_ID,
   callbackTarget: "0x50F2D5c9a4A35cb922a631019287881f56A00ED5",
   callbackAbi: AverageBalanceAbi,
