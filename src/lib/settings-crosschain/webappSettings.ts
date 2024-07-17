@@ -14,7 +14,7 @@ export const WebappSettings = {
   sourceChainId: SOURCE_CHAIN_ID,
   targetRpcUrl: getRpcUrlClientSide(TARGET_CHAIN_ID),
   targetChainId: TARGET_CHAIN_ID,
-  callbackTarget: "0x06442B357582282b4f7E76D47787dcF1C175fF1c",
+  callbackTarget: "0x19cB3D866B711EeCbCF76C3f2f9eE1212d672430",
   callbackAbi: AverageBalanceAbi,
   explorerBaseUrl: chainIdToExplorerBaseUrl(TARGET_CHAIN_ID),
 }
