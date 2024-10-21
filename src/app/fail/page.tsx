@@ -1,4 +1,4 @@
-import AdvanceStepButton from "@/components/buttons-samechain/AdvanceStepButton";
+import AdvanceStepButton from "@/components/buttons/AdvanceStepButton";
 import Title from "@/components/ui/Title";
 
 export default async function Fail() {
