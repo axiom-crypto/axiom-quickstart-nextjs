@@ -11,12 +11,12 @@ import Decimals from "../ui/Decimals";
 import { useRouter } from "next/navigation";
 import { formatEther, formatUnits } from "viem";
 import Link from "next/link";
-import { useAxiomCrosschainCircuit } from '@axiom-crypto/react';
-import { WebappSettings } from "@/lib/settings-crosschain/webappSettings";
+import { useAxiomCircuit } from '@axiom-crypto/react';
+import { WebappSettings } from "@/lib/settings/webappSettings";
 
 export default function SubmitQuery() {
   const router = useRouter();
-  const { builtQuery } = useAxiomCrosschainCircuit();
+  const { builtQuery } = useAxiomCircuit();
   const [showExplorerLink, setShowExplorerLink] = useState(false);
 
   // Prepare hook for the sendQuery transaction

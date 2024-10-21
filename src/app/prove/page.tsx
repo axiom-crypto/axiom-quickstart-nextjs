@@ -1,9 +1,9 @@
-import BuildQuery from "@/components/prove-samechain/BuildQuery";
+import BuildQuery from "@/components/prove/BuildQuery";
 import Title from "@/components/ui/Title";
 import { bytes32 } from "@/lib/utils";
-import { sourcePublicClient } from "@/lib/settings-samechain/viemClient";
+import { sourcePublicClient } from "@/lib/settings/viemClient";
 import { UserInput } from "@axiom-crypto/client";
-import { WebappSettings } from "@/lib/settings-samechain/webappSettings";
+import { WebappSettings } from "@/lib/settings/webappSettings";
 
 interface PageProps {
   params: Params;

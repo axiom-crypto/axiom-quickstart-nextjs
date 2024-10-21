@@ -2,10 +2,10 @@
 
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { wagmiConfig } from '@/lib/settings-samechain/wagmiConfig';
+import { wagmiConfig } from '@/lib/settings/wagmiConfig';
 import { useEffect, useState } from "react";
 import { AxiomCircuitProvider } from "@axiom-crypto/react";
-import { WebappSettings } from "@/lib/settings-samechain/webappSettings";
+import { WebappSettings } from "@/lib/settings/webappSettings";
 
 const queryClient = new QueryClient()
 
